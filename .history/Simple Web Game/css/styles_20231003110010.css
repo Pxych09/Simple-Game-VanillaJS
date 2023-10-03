@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inconsolata:wght@300&family=Lobster&family=PT+Sans:wght@700&family=Poppins&display=swap');
+
+*, ::before, ::after{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    left: 0; right: 0;
+    text-align: center;
+}
+
+/* FOR COLOR GAME */
+#master-color{
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: #333;
+    display: block;
+    color: #f2f2f2;
+}
+.color-title{
+    color: #cacaca;
+}
+#master-color > div{
+    width: 100%;
+    text-align: center;
+}
+#master-color .for-title-color{
+    padding-block: 2rem;
+}
+#master-color .color-dashboard > div{
+    display: flex; padding: 1rem 1.5rem;
+    gap: .5rem;
+    justify-content: flex-start; align-items: center;
+}
+#master-color .color-dashboard{
+    display: flex; gap: 1rem;
+    background-color: #222;
+    justify-content: space-around; 
+    align-items: center;
+    padding: 0;
+    /* overflow: hidden; */
+    margin-inline: auto;
+    border-radius: 4px;
+    width: min(100%, 450px);
+}
+.for-btn-color{
+    display: grid;
+    padding: 1rem;
+}
+button.btn-roll-color:hover, 
+button.btn-roll-color:focus{
+    background: rgba(253, 176, 33, 0.938);
+    outline: 2px solid rgb(226, 148, 3); 
+    color: rgb(18, 18, 231);
+    outline-offset: 1px;
+} 
+button.btn-roll-color{
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1rem;
+    outline-offset: 2px;
+    color: rgb(27, 27, 185);
+    text-transform: uppercase;
+    font-weight: bold;
+    background: orange;
+    outline: 2px solid rgba(248, 181, 58, 0.63); 
+    border: none; margin-inline: auto;
+    padding: .5rem 1rem;
+    border-radius: .7rem;
+    width: min(100%, 100px);
+    cursor: pointer;
+}
+#master-color .container-colors{
+    padding-block: 1rem;
+    display: grid;
+    place-items: center;
+}
+.container-colors .box-colors{
+    --mx-width: 450px;
+    --radius: 2px;
+    --gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap); 
+    width: min(100%, var(--mx-width));
+    background: #222;
+    padding: calc(var(--gap) * 1.5);
+    border-radius: calc(var(--radius) * 2);
+}
+.container-colors .box-colors div{
+    /* width: calc(var(--mx-width) / 3.5); */
+    background-color: #cacaca;
+    aspect-ratio: 1;
+    margin: 0;
+    border-radius: var(--radius);
+}
+.container-colors .box-colors div:hover{
+    opacity: .8;
+}
+
+.color-bet,
+.color-output{
+    margin-inline: .25rem;
+    /* background: yellow; */
+    outline: 1px solid #fdfafa;
+    width: 25px;
+    border-radius: 2px;
+    aspect-ratio: 1;
+}
+
+.container-colors .box-colors div.light{
+    opacity: 1;
+    animation: light .5s ease;
+    pointer-events: none;
+    /* animation-iteration-count: 25; */
+}
+
+.container-colors .box-colors div.win{
+    opacity: .4;
+}
+
+@keyframes light {
+    to{
+        opacity: .4;
+    }
+}
+
+
+button.btn-roll-color.unshow{
+    display: none;
+}
+button.btn-roll-color.spin-dice > .dice{
+    animation: roll .5s linear infinite;
+}
+button.btn-roll-color.spin-dice{
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+@keyframes roll {
+    to{
+        rotate: -360deg;
+    }
+}

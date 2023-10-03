@@ -3,9 +3,10 @@ const color_bet = document.querySelector('.color-bet')
 const color_output = document.querySelector('.color-output')
 const color_score = document.querySelector('#color-score')
 const btn_roll = document.querySelector('.btn-roll-color')
+const attempt = document.querySelector('#attempt')
 
 let colors_length = box_colors.length
-const colors = ['yellow', 'white', 'violet', 'blue', 'red', 'green']
+const colors = ['green', 'white', 'violet', 'blue', 'yellow', 'red']
 let isPlay = false
 color_score.innerHTML = 0
 
@@ -13,9 +14,11 @@ function initialDisplay(){
     for(let i = 0; i < colors_length; i++){
         box_colors[i].style.background = colors[i]
         box_colors[i].id = colors[i]
+        box_colors[i].title = colors[i]
 
         box_colors[i].addEventListener('click', e =>{
             btn_roll.classList.remove('unshow')
+            btn_roll.classList.remove('standby')
             color_bet.style.background = box_colors[i].id
             color_bet.id = box_colors[i].id
             color_output.style.background = "none"
@@ -35,6 +38,8 @@ function effect(){
         const item = Math.floor(Math.random() * colors_length) 
         box_colors[item].classList.add('win')
         btn_roll.classList.remove('spin-dice')
+        btn_roll.classList.add('standby')
+        box_colors[item].dataset.color = `${box_colors[item].id}`
         
         console.log(item)
         color_output.style.background = box_colors[item].id
@@ -53,6 +58,7 @@ function effect(){
                 el.classList.remove('light')
                 el.addEventListener('click', ()=>{
                     box_colors[item].classList.remove('win')
+                    box_colors[item].dataset.color = ``
                 })
             })
         }
@@ -94,4 +100,13 @@ const RollColor = (e) =>{
 
 }
 
+let count_attempt = 0
+attempt.innerHTML = `${count_attempt}`
+function countAttempt(){
+    count_attempt++
+    attempt.innerHTML = `${count_attempt}`
+}
+
+
 btn_roll.addEventListener('click', RollColor)
+
